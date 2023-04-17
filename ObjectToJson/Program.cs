@@ -1,10 +1,11 @@
-﻿using ObjectToJson;
+﻿using Newtonsoft.Json;
+using ObjectToJson;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-
+        CreateJsonFile();
     }
     static void CreateJsonFile()
     {
@@ -17,6 +18,8 @@ internal class Program
         user1.LastName = Console.ReadLine();
         Console.WriteLine("Enter email : ");
         user1.Email = Console.ReadLine();
-
+        
+        string jsonString = JsonConvert.SerializeObject(user1);
+        File.WriteAllText("userdata.json", jsonString);
     }
 }
